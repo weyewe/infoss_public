@@ -1,0 +1,214 @@
+    <div class="container">
+      
+      <%# if not  @object.is_confirmed? %>
+        <%#= render :partial => "layouts/watermark" %>
+      <%# end %> 
+      
+      <div class="row">
+        <div class="col-xs-6">
+          <h1>
+                <%= wicked_pdf_image_tag 'logo.png' %>
+          </h1>
+        </div>
+        <div class="col-xs-6 text-right">
+          <% if @object.is_confirmed %> 
+            <h1><%= @document_title  %></h1>
+            <h2><small>No: <%= @object.nomor_surat %> </small></h2>
+            <h3><small>Date: <%= @object.confirmed_at.strftime("%d-%m-%Y") %> </small></h3>
+          <% else %> 
+            <h1>DRAFT  <%= @document_title  %></h1>
+            <h2><small>No: <%= @object.nomor_surat %> </small></h2>
+            <h3><small>Date: N/A </small></h3>
+          <% end %> 
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-5">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>From: <a href="#">PT. Zentrum Graphics Asia</a></h4>
+            </div>
+            <div class="panel-body">
+              <p>
+  
+        Jl. Raya Serpong Km.7
+
+Komp. Multiguna A.1/1
+
+Pakualam, Serpong Utara,
+
+Tangerang Selatan 15325
+
+Indonesia
+
+<br /> 
+T : + 62 21 531 23 222
+<br /> 
+F : + 62 21 531 24 525
+<br /> 
+E : zga@zengra.com
+<br /> 
+www.zengra.com
+ 
+              </p>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+        <div class="col-xs-5 col-xs-offset-2 text-right">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>To : <a href="#"><%= @contact.name %></a></h4>
+            </div>
+            <div class="panel-body">
+              <p>
+          
+                <%= @contact.address %> 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / end client details section -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>
+              <h4>No</h4>
+            </th>
+            <th>
+              <h4>Sku</h4>
+            </th>
+            <th>
+              <h4>Nama Produk</h4>
+            </th>
+            <th>
+              <h4>Qty</h4>
+            </th>
+            <th>
+              <h4>Unit Price</h4>
+            </th>
+            <th>
+              <h4>Total Price <b>(<%= @object.exchange.name %>)</b></h4>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <% counter  = 1 %>
+          <% total = BigDecimal("0") %>
+          <% @object.sales_invoice_details.each do |detail| %>
+            <tr>
+              <td><%= counter %></td>
+              <td> <%= detail.item.sku %></td>
+              <td> <%= detail.item.name %></td>
+              <td><%= detail.amount  %> x <%= detail.item.uom.name %></td>
+              <td>
+ 
+                <%= number_to_currency  detail.price  , 
+                        unit: '', separator: ',', delimiter: '.', format: '%n %u' %>
+              </td>
+              <td class="text-right">
+                <%= number_to_currency  detail.price * detail.amount , 
+                        unit: '', separator: ',', delimiter: '.', format: '%n %u' %>
+          
+              </td>
+            </tr>
+            <% counter = counter + 1 %> 
+            <% total = total + detail.price * detail.amount  %>
+            
+          <% end %>
+ 
+        </tbody>
+      </table>
+      <div class="row text-right">
+        <div class="col-xs-2 col-xs-offset-8">
+          <p>
+            <strong>
+      
+            Total : <br>
+            </strong>
+          </p>
+        </div>
+        <div class="col-xs-2">
+          <strong> 
+          <%= number_to_currency total, unit: '', separator: ',', delimiter: '.', format: '%n %u' %>
+          <br>
+          </strong>
+        </div>
+      </div>
+      
+      
+      <div class="row" style="margin-top:10px;">
+ 
+        <div class="col-xs-12" style='border:none;'>
+          <div class="span12">
+            <div class="panel panel-info" style='border:none;'>
+              <div class="panel-heading">
+                <h4>Notes</h4>
+              </div>
+              <div class="panel-body" style='border:none;'>
+                <p>
+                  1. Prices quoted in
+
+ Harga dalam mata uang
+
+2. Prices exclude 10% VAT 
+
+ Harga belum termasuk PPN 10% 
+
+3. Please sign & fax / email to us upon acceptance. 
+
+ Mohon di tanda tangani & di fax / email ke kami setelah disetujui
+
+: Rupiah at USD exchange rate of Rp.1.00 - Rp.1.00
+
+pada kurs USD
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+   
+   <div class="row">
+        <div class="col-xs-5 text-center">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>PT. Zentrum Graphics Asia</h4>
+            </div>
+            <div class="panel-body">
+              <p>
+                 <br /><br /><br />
+                 <%= "..................."*3 %>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+
+        <div class="col-xs-5 col-xs-offset-2 text-center">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4><%= @contact.name %></h4>
+            </div>
+            <div class="panel-body">
+              <p>
+                  <br /><br /><br />
+               <%= "..................."*3 %>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>

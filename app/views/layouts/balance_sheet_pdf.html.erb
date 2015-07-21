@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF</title>
+  <%= wicked_pdf_stylesheet_link_tag 'print_application', media: 'all' %>
+  
+      <style>
+      @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+      body, h1, h2, h3, h4, h5, h6{
+      font-family: 'Droid Sans', serif;
+      }
+    </style>
+</head>
+<body> 
+  <%= render :partial => "layouts/sample_balance_sheet" %>
+</body>
+</html>

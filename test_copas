@@ -1,0 +1,13 @@
+'receiptvoucherProcess receiptvoucherlist button[action=downloadObject]': {
+    click: this.downloadObject
+}	
+
+
+downloadObject: function(){
+		var record = this.getList().getSelectedObject();
+		var id = record.get("id")
+		if( record ){
+			window.open( 'receipt_vouchers/' + id + '.pdf' );
+		}
+		
+},

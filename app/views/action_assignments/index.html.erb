@@ -1,0 +1,38 @@
+<div class="container">
+    <% @sections.each do |section| %> 
+        <div class="row">
+          <h2 style="text-decoration: underline;"><%= section.name %> <%= section.id %></h2>
+            <div class="bs-example" data-example-id="striped-table">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                      <th>Index</th>
+                      <th>Show</th>
+                      <th>Search</th>
+                      <th>Update</th>
+                      <th>Confirm</th>
+                      <th>Unconfirm</th>
+                      <th>Destroy</th> 
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Status</th>
+                      <td><input type="checkbox"> </td>
+                      <td><input type="checkbox"> </td>
+                      <td><input type="checkbox"> </td>
+                      <td><input type="checkbox"> </td>
+                      <td><input type="checkbox"> </td>
+                      <td><input type="checkbox"> </td>
+                      <td><input type="checkbox"> </td>
+                    </tr>
+    
+                  </tbody>
+                </table>
+            </div>
+        
+        </div>
+    <% end %>
+    
+</div>

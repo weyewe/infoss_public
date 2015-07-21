@@ -1,0 +1,102 @@
+migration_procedure:
+
+bundle exec rake db:drop;  bundle exec rake db:create; bundle exec rake db:migrate
+
+bundle exec rake flush_lookup_folder
+bundle exec rake migrate_zga:base_setup
+bundle exec rake migrate_zga:exchange
+bundle exec rake migrate_zga:cash_bank
+bundle exec rake migrate_zga:coa 
+
+
+
+bundle exec rake migrate_zga:contact_group
+bundle exec rake migrate_zga:contact
+
+bundle exec rake migrate_zga:user 
+bundle exec rake migrate_zga:employee
+
+
+bundle exec rake migrate_zga:machine 
+bundle exec rake migrate_zga:uom
+bundle exec rake migrate_zga:item_type
+bundle exec rake  migrate_zga:sub_type
+
+
+bundle exec rake migrate_zga:independent_item 
+bundle exec rake migrate_zga:blanket 
+bundle exec rake migrate_zga:core_builder
+bundle exec rake migrate_zga:roller_type
+bundle exec rake  migrate_zga:roller_builder 
+bundle exec rake migrate_zga:warehouse 
+
+
+bundle exec rake migrate_zga:exchange_rate
+ 
+bundle exec rake migrate_zga:stock_adjustment
+bundle exec rake migrate_zga:stock_adjustment_detail  
+bundle exec rake migrate_zga:confirm_stock_adjustment
+
+
+
+
+bundle exec rake migrate_zga:purchase_order
+bundle exec rake migrate_zga:purchase_order_detail  
+bundle exec rake migrate_zga:confirm_purchase_order
+
+bundle exec rake migrate_zga:purchase_receival
+bundle exec rake migrate_zga:purchase_receival_detail  
+bundle exec rake migrate_zga:confirm_purchase_receival
+
+bundle exec rake migrate_zga:purchase_invoice
+bundle exec rake migrate_zga:purchase_invoice_detail  
+bundle exec rake migrate_zga:confirm_purchase_invoice
+
+bundle exec rake migrate_zga:sales_order
+bundle exec rake migrate_zga:sales_order_detail  
+bundle exec rake migrate_zga:confirm_sales_order
+bundle exec rake migrate_zga:delivery_order
+bundle exec rake migrate_zga:delivery_order_detail  
+bundle exec rake migrate_zga:confirm_delivery_order
+
+bundle exec rake migrate_zga:sales_invoice
+bundle exec rake migrate_zga:sales_invoice_detail  
+bundle exec rake migrate_zga:confirm_sales_invoice
+bundle exec rake migrate_zga:outstanding_sales_invoice 
+bundle exec rake migrate_zga:receivable 
+
+
+bundle exec rake migrate_zga:receipt_voucher
+bundle exec rake migrate_zga:receipt_voucher_detail
+bundle exec rake migrate_zga:confirm_receipt_voucher
+
+
+bundle exec rake migrate_zga:payment_request
+bundle exec rake migrate_zga:payment_request_detail
+bundle exec rake migrate_zga:confirm_payment_request
+bundle exec rake migrate_zga:outstanding_purchase_invoice 
+bundle exec rake migrate_zga:payable 
+
+
+
+
+bundle exec rake migrate_zga:payment_voucher
+bundle exec rake migrate_zga:payment_voucher_detail
+bundle exec rake migrate_zga:confirm_payment_voucher
+
+
+ 
+bundle exec rake migrate_zga:roller_identification_form
+bundle exec rake migrate_zga:roller_identification_form_detail
+bundle exec rake migrate_zga:confirm_roller_identification_form
+
+bundle exec rake migrate_zga:recovery_order
+bundle exec rake migrate_zga:recovery_order_detail
+bundle exec rake migrate_zga:confirm_recovery_order 
+
+ 
+ 
+ 
+bundle exec rake migrate_zga:blanket_order
+bundle exec rake migrate_zga:blanket_order_detail 
+bundle exec rake migrate_zga:confirm_blanket_order 
